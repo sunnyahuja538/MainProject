@@ -7,7 +7,7 @@ const userModel=require('../models/user-model')
 // By writing this explicit validation, you're catching errors earlier — typically before the document even reaches Mongoose's internal validation mechanism. This can be helpful for providing custom error 
 // messages or handling input validation differently from Mongoose's built-in validation.
 
-module.exports.createUser=async({//pass as a object
+module.exports.createUser=async({//pass parameters as a object
     firstname,lastname,email,password
 })=>{
     if(!firstname||!email||!password)

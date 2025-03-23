@@ -39,11 +39,15 @@ const userSchema=new mongoose.Schema({
     }
 })
 
-
+//methods are defined on instances of a class and statics are defined on class itself
 userSchema.methods.generateAuthToken=function (){
 
     //payload,jwtsecretkey
-    const token=jwt.sign({_id:this._id},process.env.JWT_SECRET);
+    const token = jwt.sign(
+        { _id: this._id },
+        process.env.JWT_SECRET,
+        { expiresIn: '24h' }
+    );
     return token;
 }
 userSchema.methods.comparePassword=async function (password)
